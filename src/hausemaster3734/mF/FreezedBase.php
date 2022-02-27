@@ -26,7 +26,7 @@ class FreezedBase {
         $whoFreezed->sendMessage(str_replace(["*player*", "*time*", "*msg*"], [$playerName, $time, $message], $config->get("senderMsg")));
     }
 
-    public static function delFreezed(string $playerName) {
+    public static function delFreezed(string $playerName): void {
         if(array_key_exists($playerName, self::$freezed)) unset(self::$freezed[$playerName]);
     }
 
