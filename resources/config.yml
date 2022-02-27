@@ -1,0 +1,34 @@
+# This is a configuration file of mFreeze.
+
+# The time that the plugin will count down before punishing the player.
+freezedTime: 120 # in seconds
+
+# Is Private Messages allowed?
+allowArrayOfCommands: true
+
+# ArrayOfCommands that can be allowed for frozen players.
+arrayOfCommands: ["/w", "/tell", "/pm", "/msg"]
+
+# The message that will be displayed in the chat for a player who has been frozen.
+frozenMsg: "You have been frozen by *sender*.\nAdministrator message: *msg*"
+
+# The message that will be displayed in the chat for an administrator who has frozen a player.
+senderMsg: "You have frozen a player *player* for *time* seconds.  After this time, he will be punished.\nYour message: *msg*"
+
+# Тitle that will be displayed for a player who is frozen every 5 seconds.
+frozenTitle: "CC"
+
+# SubТitle that will be displayed for a player who is frozen every 5 seconds.
+frozenSubTitle: "You have been frozen\ncheck chat!"
+
+# ActionBar that will be displayed for a player who is frozen every second.
+frozenActionBar: "To ban *time*"
+
+# Command that will be executed after leave.
+punishmentCommand: "ban *player* Leave from being frozen."
+
+# The message that will be sent to the player who tries to hit him.
+attackMessage: "He's frozen EEEEEEEEEEE"
+
+# The message that will be sent to the player after un-freezing.
+unfreezeMessage: "You have been unfrozen.\nNow you are free."

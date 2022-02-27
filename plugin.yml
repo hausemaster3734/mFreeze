@@ -1,0 +1,10 @@
+name: mFreeze
+load: POSTWORLD
+version: 1.0
+api: 4.0.0
+main: hausemaster3734\Loader
+author: Hausemaster3734
+permissions:
+  mfreeze.command.use:
+    description: A simple permission.
+    default: op
