@@ -21,9 +21,11 @@ class Loader extends PluginBase {
         $this->getScheduler()->scheduleRepeatingTask(new FreezeTask($this), 20);
         $this->getServer()->getCommandMap()->register("mfreeze", new MfreezeCommand($this));
         new FreezedBase($this);
+        $this->saveDefaultConfig();
     }
 
     public function onDisable(): void {
         $this->getLogger()->notice("mFreeze says: \"I was successfully disabled\".");
+        $this->saveDefaultConfig();
     }
 }

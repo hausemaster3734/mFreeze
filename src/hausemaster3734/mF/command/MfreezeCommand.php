@@ -14,7 +14,7 @@ class MfreezeCommand extends Command {
     public Loader $plugin;
 
     public function __construct(Loader $plugin) {
-        parent::__construct("mfreeze", "Freeze a Player", "<player> <message>");
+        parent::__construct("mfreeze", "Freeze a Player", "/mfreeze <player> <message>");
         $this->setPermission("mfreeze.command.use");
         $this->plugin = $plugin;
     }
@@ -24,9 +24,12 @@ class MfreezeCommand extends Command {
         if(count($args) < 2) throw new InvalidCommandSyntaxException();
         $player = $sender->getServer()->getPlayerByPrefix($args[0]);
         $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
-        unset($args[1]);
+        unset($args[0]);
         $message = implode(" ", $args);
-        if($player==null) $sender->sendMessage(TextFormat::RED."Player not found");
+        if($player==null) {
+            $sender->sendMessage(TextFormat::RED . "Player not found");
+            return false;
+        }
         FreezedBase::try(
             $player,
             $castedSender,

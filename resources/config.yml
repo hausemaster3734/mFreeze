@@ -7,7 +7,7 @@ freezedTime: 120 # in seconds
 allowArrayOfCommands: true
 
 # ArrayOfCommands that can be allowed for frozen players.
-arrayOfCommands: ["/w", "/tell", "/pm", "/msg"]
+arrayOfCommands: ["/w", "/tell", "/pm", "/msg", "/mfreeze"] # Required "/"
 
 # The message that will be displayed in the chat for a player who has been frozen.
 frozenMsg: "You have been frozen by *sender*.\nAdministrator message: *msg*"
