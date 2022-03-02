@@ -7,6 +7,7 @@ use hausemaster3734\mFreeze\FreezedBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\utils\InvalidCommandSyntaxException;
+use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
@@ -23,6 +24,22 @@ class MfreezeCommand extends Command implements PluginOwned {
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         $this->testPermission($sender);
+        $player = $sender->getServer()->getPlayerByPrefix($args[0]);
+        $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
+        if(!$sender instanceof Player) return true;
+        if(count($args)==1) {
+            if($player==null) throw new InvalidCommandSyntaxException();
+            if(array_key_exists($player->getName(), FreezedBase::$freezed)) {
+                FreezedBase::try(
+                    $player,
+                    $castedSender,
+                    $this->plugin->config->get("freezedTime"),
+                    ""
+                );
+                return true;
+            }
+
+        }
         if(count($args) < 2) throw new InvalidCommandSyntaxException();
         $player = $sender->getServer()->getPlayerByPrefix($args[0]);
         $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
@@ -30,7 +47,7 @@ class MfreezeCommand extends Command implements PluginOwned {
         $message = implode(" ", $args);
         if($player==null) {
             $sender->sendMessage(TextFormat::RED . "Player not found");
-            return false;
+            return true;
         }
         FreezedBase::try(
             $player,

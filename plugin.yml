@@ -2,7 +2,7 @@ name: mFreeze
 load: POSTWORLD
 version: 1.1
 api: 4.0.0
-main: hausemaster3734\Loader
+main: hausemaster3734\mFreeze\Loader
 author: Hausemaster3734
 permissions:
   mfreeze.command.use:

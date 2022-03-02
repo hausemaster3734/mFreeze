@@ -9,7 +9,7 @@ class FreezedBase {
 
     public static array $freezed = [];
 
-    public static Loader $plugin;
+    private static Loader $plugin;
 
     public function __construct(Loader $plugin) {
         self::$plugin = $plugin;
