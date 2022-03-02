@@ -3,7 +3,7 @@
 # The time that the plugin will count down before punishing the player.
 freezedTime: 120 # in seconds
 
-# Is Private Messages allowed?
+# Is Array of allowed commands enabled?
 allowArrayOfCommands: true
 
 # ArrayOfCommands that can be allowed for frozen players.

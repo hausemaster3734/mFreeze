@@ -1,15 +1,17 @@
 <?php
 
-namespace hausemaster3734\mF\command;
+namespace hausemaster3734\mFreeze\command;
 
-use hausemaster3734\Loader;
-use hausemaster3734\mF\FreezedBase;
+use hausemaster3734\mFreeze\Loader;
+use hausemaster3734\mFreeze\FreezedBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\utils\InvalidCommandSyntaxException;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class MfreezeCommand extends Command {
+class MfreezeCommand extends Command implements PluginOwned {
 
     public Loader $plugin;
 
@@ -37,5 +39,9 @@ class MfreezeCommand extends Command {
             $message
         );
         return true;
+    }
+
+    public function getOwningPlugin(): Plugin {
+        return $this->plugin;
     }
 }

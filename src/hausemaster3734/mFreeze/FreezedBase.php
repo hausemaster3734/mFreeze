@@ -1,8 +1,7 @@
 <?php
 
-namespace hausemaster3734\mF;
+namespace hausemaster3734\mFreeze;
 
-use hausemaster3734\Loader;
 use pocketmine\console\ConsoleCommandSender;
 use pocketmine\player\Player;
 

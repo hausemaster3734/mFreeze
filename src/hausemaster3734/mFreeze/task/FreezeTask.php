@@ -1,9 +1,9 @@
 <?php
 
-namespace hausemaster3734\mF\task;
+namespace hausemaster3734\mFreeze\task;
 
-use hausemaster3734\Loader;
-use hausemaster3734\mF\FreezedBase;
+use hausemaster3734\mFreeze\Loader;
+use hausemaster3734\mFreeze\FreezedBase;
 use pocketmine\scheduler\Task;
 use pocketmine\world\sound\AnvilFallSound;
 

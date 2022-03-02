@@ -1,8 +1,7 @@
 <?php
 
-namespace hausemaster3734\mF;
+namespace hausemaster3734\mFreeze;
 
-use hausemaster3734\Loader;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
