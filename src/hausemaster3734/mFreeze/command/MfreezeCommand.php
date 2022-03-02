@@ -38,7 +38,6 @@ class MfreezeCommand extends Command implements PluginOwned {
                 );
                 return true;
             }
-
         }
         if(count($args) < 2) throw new InvalidCommandSyntaxException();
         $player = $sender->getServer()->getPlayerByPrefix($args[0]);
