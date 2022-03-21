@@ -39,22 +39,24 @@ class MfreezeCommand extends Command implements PluginOwned {
                 return true;
             }
         }
-        if(count($args) < 2) throw new InvalidCommandSyntaxException();
-        $player = $sender->getServer()->getPlayerByPrefix($args[0]);
-        $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
-        unset($args[0]);
-        $message = implode(" ", $args);
-        if($player==null) {
-            $sender->sendMessage(TextFormat::RED . "Player not found");
+        if(count($args) < 1) {
+            $player = $sender->getServer()->getPlayerByPrefix($args[0]);
+            $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
+            unset($args[0]);
+            $message = implode(" ", $args);
+            if($player==null) {
+                $sender->sendMessage(TextFormat::RED . "Player not found");
+                return true;
+            }
+            FreezedBase::try(
+                $player,
+                $castedSender,
+                $this->plugin->config->get("freezedTime"),
+                $message
+            );
             return true;
         }
-        FreezedBase::try(
-            $player,
-            $castedSender,
-            $this->plugin->config->get("freezedTime"),
-            $message
-        );
-        return true;
+        return false;
     }
 
     public function getOwningPlugin(): Plugin {
