@@ -14,7 +14,7 @@ use pocketmine\utils\TextFormat;
 
 class MfreezeCommand extends Command implements PluginOwned {
 
-    public Loader $plugin;
+    private Loader $plugin;
 
     public function __construct(Loader $plugin) {
         parent::__construct("mfreeze", "Freeze a Player", "/mfreeze <player> <message>");
