@@ -7,7 +7,7 @@ use pocketmine\player\Player;
 
 class FreezedBase {
 
-    private static array $freezed = [];
+    public static array $freezed = [];
 
     private static Loader $plugin;
 
