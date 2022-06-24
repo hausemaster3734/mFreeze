@@ -24,11 +24,18 @@ class MfreezeCommand extends Command implements PluginOwned {
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         $this->testPermission($sender);
+        if(!isset($srgs[0])) {
+            throw new InvalidCommandSyntaxException();
+            return false;
+        }
         $player = $sender->getServer()->getPlayerByPrefix($args[0]);
         $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
         if(!$sender instanceof Player) return true;
         if(count($args)==1) {
             if($player==null) throw new InvalidCommandSyntaxException();
+            if ($player->getName() === $sender->getName()) {
+                $sender->sendMessage($this->plugin->config->get("cantFreezeYourself"));
+            }
             if(array_key_exists($player->getName(), FreezedBase::$freezed)) {
                 FreezedBase::try(
                     $player,
