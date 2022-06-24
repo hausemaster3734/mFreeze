@@ -26,11 +26,10 @@ class MfreezeCommand extends Command implements PluginOwned {
         $this->testPermission($sender);
         if(!isset($srgs[0])) {
             throw new InvalidCommandSyntaxException();
-            return false;
         }
         $player = $sender->getServer()->getPlayerByPrefix($args[0]);
         $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
-        if(!$sender instanceof Player) return true;
+        if(!$sender instanceof Player) return false;
         if(count($args)==1) {
             if($player==null) throw new InvalidCommandSyntaxException();
             if ($player->getName() === $sender->getName()) {
