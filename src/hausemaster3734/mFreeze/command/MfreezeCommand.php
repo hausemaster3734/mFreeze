@@ -43,7 +43,7 @@ class MfreezeCommand extends Command implements PluginOwned {
             }
         }
         if(count($args) < 1) {
-            $_ = $args
+            $_ = $args;
             $player = $sender->getServer()->getPlayerByPrefix($_[0]);
             $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
             unset($_[0]);
