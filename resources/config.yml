@@ -27,9 +27,6 @@ frozenActionBar: "To ban *time*"
 # Command that will be executed after leave.
 punishmentCommand: "ban *player* Leave from being frozen."
 
-# The message thar will be sent to player if he tries to freeze yourself
-cantFreezeYourself: "You cannot freeze yourself."
-
 # The message that will be sent to the player who tries to hit him.
 attackMessage: "He's frozen EEEEEEEEEEE"
 

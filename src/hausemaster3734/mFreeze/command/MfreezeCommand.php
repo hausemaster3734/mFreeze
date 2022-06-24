@@ -14,7 +14,7 @@ use pocketmine\utils\TextFormat;
 
 class MfreezeCommand extends Command implements PluginOwned {
 
-    private Loader $plugin;
+    public Loader $plugin;
 
     public function __construct(Loader $plugin) {
         parent::__construct("mfreeze", "Freeze a Player", "/mfreeze <player> <message>");
@@ -25,13 +25,10 @@ class MfreezeCommand extends Command implements PluginOwned {
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         $this->testPermission($sender);
         $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
-        if(!$sender instanceof Player) return false;
+        if(!$sender instanceof Player) return true;
         if(count($args)==1) {
             $player = $sender->getServer()->getPlayerByPrefix($args[0]);
             if($player==null) throw new InvalidCommandSyntaxException();
-            if ($player->getName() === $sender->getName()) {
-                $sender->sendMessage($this->plugin->config->get("cantFreezeYourself"));
-            }
             if(array_key_exists($player->getName(), FreezedBase::$freezed)) {
                 FreezedBase::try(
                     $player,
@@ -41,26 +38,23 @@ class MfreezeCommand extends Command implements PluginOwned {
                 );
                 return true;
             }
+
         }
-        if(count($args) < 1) {
-            $_ = $args;
-            $player = $sender->getServer()->getPlayerByPrefix($_[0]);
-            $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
-            unset($_[0]);
-            $message = implode(" ", $_);
-            if($player==null) {
-                $sender->sendMessage(TextFormat::RED . "Player not found");
-                return true;
-            }
-            FreezedBase::try(
-                $player,
-                $castedSender,
-                $this->plugin->config->get("freezedTime"),
-                $message
-            );
+        if(count($args) < 2) throw new InvalidCommandSyntaxException();
+        $player = $sender->getServer()->getPlayerByPrefix($args[0]);
+        unset($args[0]);
+        $message = implode(" ", $args);
+        if($player==null) {
+            $sender->sendMessage(TextFormat::RED . "Player not found");
             return true;
         }
-        return false;
+        FreezedBase::try(
+            $player,
+            $castedSender,
+            $this->plugin->config->get("freezedTime"),
+            $message
+        );
+        return true;
     }
 
     public function getOwningPlugin(): Plugin {
