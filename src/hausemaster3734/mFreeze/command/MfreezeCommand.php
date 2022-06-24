@@ -43,10 +43,11 @@ class MfreezeCommand extends Command implements PluginOwned {
             }
         }
         if(count($args) < 1) {
-            $player = $sender->getServer()->getPlayerByPrefix($args[0]);
+            $_ = $args
+            $player = $sender->getServer()->getPlayerByPrefix($_[0]);
             $castedSender = $sender->getServer()->getPlayerByPrefix($sender->getName());
-            unset($args[0]);
-            $message = implode(" ", $args);
+            unset($_[0]);
+            $message = implode(" ", $_);
             if($player==null) {
                 $sender->sendMessage(TextFormat::RED . "Player not found");
                 return true;
