@@ -34,7 +34,7 @@ class FreezedBase {
         if($punish===true) {
             $commandExecutor = new ConsoleCommandSender(self::$plugin->getServer(), self::$plugin->getServer()->getLanguage());
             $command = self::$plugin->config->get("punishmentCommand");
-            self::$plugin->getServer()->dispatchCommand($commandExecutor, $command);
+            self::$plugin->getServer()->dispatchCommand($commandExecutor, str_replace("*player*", $playerName, $command));
         }
         $player = self::$plugin->getServer()->getPlayerByPrefix($playerName);
         $player?->sendMessage(self::$plugin->config->get("unfreezeMessage"));
